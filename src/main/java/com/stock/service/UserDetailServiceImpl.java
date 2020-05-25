@@ -21,12 +21,16 @@ public class UserDetailServiceImpl implements UserDetailService {
 	private ModelMapper modelMapper;
 
 	@Override
-	public String createUser(UserDetailModel userDetailModel) {
+	public UserDetailModel createUser(UserDetailModel userDetailModel) {
 
 		UserDetail userDetail = modelMapper.map(userDetailModel, UserDetail.class);
 		if(!StringUtils.isEmpty(userDetail.getPassword())) {
 			userDetail.setPassword(EncryptionUtils.getEncryptedPassword(userDetail.getPassword()));
+			UserDetail savedUserDetails = userRepository.save(userDetail);
+			if(savedUserDetails.getId()>0) {
+				userDetailModel= modelMapper.map(savedUserDetails, UserDetailModel.class);
+			}
 		}
-		return null;
+		return userDetailModel ;
 	}
 }

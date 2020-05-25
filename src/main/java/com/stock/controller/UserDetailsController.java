@@ -26,9 +26,8 @@ public class UserDetailsController {
 	}
 	
 	@PostMapping(value="/user")
-	public String createUser(@RequestBody UserDetailModel userDetailModel) {
-
-		userDetailService.createUser(userDetailModel);
-		return null;
+	public UserDetailModel createUser(@RequestBody UserDetailModel userDetailModel) {
+		UserDetailModel detailModel = userDetailService.createUser(userDetailModel);
+		return detailModel;
 	}
 }

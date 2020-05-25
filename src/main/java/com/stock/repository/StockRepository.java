@@ -1,19 +1,12 @@
-/**
- * 
- */
 package com.stock.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.stock.domain.UserDetail;
-
-/**
- * @author Dinesh
- *
- */
+import com.stock.domain.Stock;
 
 @Repository
-public interface UserRepository extends JpaRepository<UserDetail,Integer> {
+public interface StockRepository extends JpaRepository<Stock, Integer> {
 
+	
 }

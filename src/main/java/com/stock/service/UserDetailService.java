@@ -11,5 +11,5 @@ import com.stock.model.UserDetailModel;
  */
 public interface UserDetailService {
 
-	String createUser(UserDetailModel userDetailModel);
+	UserDetailModel createUser(UserDetailModel userDetailModel);
 }
