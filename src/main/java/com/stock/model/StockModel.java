@@ -15,7 +15,7 @@ public class StockModel {
 
 	private Long id;
 	private String name;
-	private Long price;
+	private Long currentPrice;
 	private Long lowPrice;
 	private Long highPrice;
 	private Long totalQuantities;

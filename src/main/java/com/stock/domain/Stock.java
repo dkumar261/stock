@@ -31,7 +31,7 @@ public class Stock {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	private String name;
-	private Long price;
+	private Long currentPrice;
 	private Long lowPrice;
 	private Long highPrice;
 	private Long totalQuantities;

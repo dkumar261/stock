@@ -29,7 +29,6 @@ public class UserStock {
 	private Long currentValue;
 	private Long averagePrice;
 	private Long profitAndLoss;
-	private Long price;
 	private Long investmentValue;
 	private LocalDateTime createdAt;
 

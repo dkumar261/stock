@@ -27,13 +27,13 @@ public class UserDetailStockServiceImpl implements UserDetailStockService {
 
 	@Resource
 	private UserStockRespository userStockRespository;
-	
+
 	@Resource
 	private UserRepository userRepository;
 
 	@Resource
 	private StockRepository stockRepository;
-	
+
 	@Resource
 	private ModelMapper modelMapper;
 
@@ -45,22 +45,28 @@ public class UserDetailStockServiceImpl implements UserDetailStockService {
 	 */
 	@Override
 	public UserStockModel create(UserStockModel userStockModel, Integer userId, Integer stockId) {
-		
-		long total = userStockModel.getCurrentPrice()+userStockModel.getQuantities();
-		
+
 		UserDetail userDetail = userRepository.getOne(userId);
 		Stock stock = stockRepository.getOne(stockId);
-		
+
 		UserStock userStock = modelMapper.map(userStockModel, UserStock.class);
 		if (userStock != null) {
 			userStock.setUserDetail(userDetail);
 			userStock.setStock(stock);
 			userStock.setCreatedAt(LocalDateTime.now());
-			userStock.setInvestmentValue(total);
-			
+			userStock.setInvestmentValue(stockCalculation(userStockModel));
+
 			UserStock saveUserStock = userStockRespository.save(userStock);
 			userStockModel = modelMapper.map(saveUserStock, UserStockModel.class);
 		}
 		return userStockModel;
+	}
+
+	private Long stockCalculation(UserStockModel userStockModel) {
+		Long total= 0L;
+//		if (userStockModel.getPrice() != null && userStockModel.getQuantities() != null) {
+//			total = userStockModel.getPrice() + userStockModel.getQuantities();
+//		}
+		return total;
 	}
 }

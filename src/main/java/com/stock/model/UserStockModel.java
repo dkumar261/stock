@@ -12,11 +12,9 @@ import lombok.Setter;
 public class UserStockModel {
 
 	private Integer id;
-	private Integer quantities;
+	private Long quantities;
 	private Long currentPrice;
-	private Long currentValue;
 	private Long averagePrice;
-	private Long price;
 	private Long profitAndLoss;
 	
 }
